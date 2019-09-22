@@ -53,25 +53,24 @@ window.renderStatistics = function(ctx, names, times) {
     console.log (gystoHeightUser);
 
     if (j > 0) {
-    gystoXUser += (gystoWidth + gystoGap);
-  }
+      gystoXUser += (gystoWidth + gystoGap);
+    }
 
-  if (names[j] !== 'Вы') {
+    if (names[j] !== 'Вы') {
       userFillStyle = 'rgba(65, 104, 225, ' + Math.random() + ' )';
+    }
+
+    ctx.fillStyle = userFillStyle;
+    ctx.fillRect(gystoXUser, gystoYUser + gystoHeight - gystoHeightUser, gystoWidth, gystoHeightUser);
+
+    ctx.fillStyle = textColor;
+    ctx.font = String(fontSize) + 'px ' + fontStile;
+    ctx.textBaseline = 'hanging';
+    ctx.fillText (names[j], gystoXUser, gystoYUser + gystoHeight + fontSize);
+
+    ctx.fillStyle = textColor;
+    ctx.font = String(fontSize) + 'px ' + fontStile;
+    ctx.textBaseline = 'hanging';
+    ctx.fillText (Math.round(times[j]), gystoXUser, gystoYUser + gystoHeight - gystoHeightUser - fontSize);
   }
-
-  ctx.fillStyle = userFillStyle;
-  ctx.fillRect(gystoXUser, gystoYUser + gystoHeight - gystoHeightUser, gystoWidth, gystoHeightUser);
-
-  ctx.fillStyle = textColor;
-  ctx.font = String(fontSize) + 'px ' + fontStile;
-  ctx.textBaseline = 'hanging';
-  ctx.fillText (names[j], gystoXUser, gystoYUser + gystoHeight + fontSize);
-
-  ctx.fillStyle = textColor;
-  ctx.font = String(fontSize) + 'px ' + fontStile;
-  ctx.textBaseline = 'hanging';
-  ctx.fillText (Math.round(times[j]), gystoXUser, gystoYUser + gystoHeight - gystoHeightUser - fontSize);
-  }
-
 };
