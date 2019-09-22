@@ -15,7 +15,6 @@ var textColor = 'rgb(0, 0, 0)'; // цвет текста
 var gystoHeight = 150; // высота гистограммы
 var gystoWidth = 40; // ширина гистограммы
 var gystoGap = 50; // расстояние между колонками
-var userFillStyle = 'rgba(255, 0, 0, 1)'; // цвет основного игрока
 
 
 window.renderStatistics = function (ctx, names, times) {
@@ -53,8 +52,9 @@ window.renderStatistics = function (ctx, names, times) {
       gystoXUser += (gystoWidth + gystoGap);
     }
 
-    if (names[j] !== 'Вы') {
-      userFillStyle = 'rgba(65, 104, 225, ' + Math.random() + ' )';
+    var userFillStyle = 'rgba(65, 104, 225, ' + Math.random() + ' )'; // цвет НЕосновного игрока
+    if (names[j] === 'Вы') {
+      userFillStyle = 'rgba(255, 0, 0, 1)';
     }
 
     ctx.fillStyle = userFillStyle;
