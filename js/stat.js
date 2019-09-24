@@ -65,12 +65,12 @@ window.renderStatistics = function (ctx, names, times) {
       userFillStyle = 'rgba(255, 0, 0, 1)';
     }
 
-    ctx.fillStyle = userFillStyle;
-    ctx.fillRect(gystoXUser + (GYSTO_WEIDTH + GYSTO_GAP) * j, gystoYUser + GYSTO_HEIGHT - gystoHeightUser, GYSTO_WEIDTH, gystoHeightUser);
-
     ctx.fillStyle = TEXT_COLOR;
     ctx.fillText(names[j], gystoXUser + (GYSTO_WEIDTH + GYSTO_GAP) * j, gystoYUser + GYSTO_HEIGHT + FONT_SIZE);
 
     ctx.fillText(Math.round(times[j]), gystoXUser + (GYSTO_WEIDTH + GYSTO_GAP) * j, gystoYUser + GYSTO_HEIGHT - gystoHeightUser - FONT_SIZE);
+
+    ctx.fillStyle = userFillStyle;
+    ctx.fillRect(gystoXUser + (GYSTO_WEIDTH + GYSTO_GAP) * j, gystoYUser + GYSTO_HEIGHT - gystoHeightUser, GYSTO_WEIDTH, gystoHeightUser);
   }
 };
