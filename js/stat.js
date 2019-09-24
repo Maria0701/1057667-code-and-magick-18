@@ -30,14 +30,12 @@ var getMaxElement = function (element) {
   return maxElement;
 };
 
-var randomInteger = function randomInteger(min, max) {
-  // случайное число от min до (max+1)
-  var random = min + Math.random() * (max + 1 - min);
-  return Math.floor(random);
+var getRandomInteger = function randomInteger(min, max) {
+  return Math.floor(min + Math.random() * (max + 1 - min));
 };
 
 var getBlueWithRandomSaturation = function () {
-  return ('hsl(240,' + randomInteger(0, 100) + '%, 50% )');
+  return ('hsl(240,' + getRandomInteger(0, 100) + '%, 50% )');
 };
 
 window.renderStatistics = function (ctx, names, times) {
@@ -67,13 +65,12 @@ window.renderStatistics = function (ctx, names, times) {
       userFillStyle = 'rgba(255, 0, 0, 1)';
     }
 
-    ctx.fillStyle = userFillStyle;
-    ctx.fillRect(gystoXUser + (GYSTO_WEIDTH + GYSTO_GAP) * j, gystoYUser + GYSTO_HEIGHT - gystoHeightUser, GYSTO_WEIDTH, gystoHeightUser);
-
     ctx.fillStyle = TEXT_COLOR;
     ctx.fillText(names[j], gystoXUser + (GYSTO_WEIDTH + GYSTO_GAP) * j, gystoYUser + GYSTO_HEIGHT + FONT_SIZE);
 
-    ctx.fillStyle = TEXT_COLOR;
     ctx.fillText(Math.round(times[j]), gystoXUser + (GYSTO_WEIDTH + GYSTO_GAP) * j, gystoYUser + GYSTO_HEIGHT - gystoHeightUser - FONT_SIZE);
+
+    ctx.fillStyle = userFillStyle;
+    ctx.fillRect(gystoXUser + (GYSTO_WEIDTH + GYSTO_GAP) * j, gystoYUser + GYSTO_HEIGHT - gystoHeightUser, GYSTO_WEIDTH, gystoHeightUser);
   }
 };
