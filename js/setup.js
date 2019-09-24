@@ -1,14 +1,17 @@
 'use strict';
+
 var WIZARDS_COUNT = 4;
 var WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 var WIZARD_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var WIZARD_COAT = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var WIZARD_EYES = ['black', 'red', 'blue', 'yellow', 'green'];
 
+
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
+
 
 var getRandomInteger = function randomInteger(min, max) {
   return Math.floor(min + Math.random() * (max + 1 - min));
@@ -46,3 +49,4 @@ for (var i = 0; i < WIZARDS_COUNT; i++) {
   fragment.appendChild(createWizardElement(generateWizardWithRandomOptions()));
 }
 similarListElement.appendChild(fragment);
+
