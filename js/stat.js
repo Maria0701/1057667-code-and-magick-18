@@ -20,23 +20,24 @@ var renderCloud = function (ctx, x, y, color) {
   ctx.fillRect(x, y, CLOUD_WEIDTH, CLOUD_HEIGHT);
 };
 
-var getMaxTime = function (el) {
-  var maxTime = el[0];
-  for (var i = 1; i < el.length; i++) {
-    if (el[i] > maxTime) {
-      maxTime = el[i];
+var getMaxElement = function (element) {
+  var maxElement = element[0];
+  for (var i = 1; i < element.length; i++) {
+    if (element[i] > maxElement) {
+      maxElement = element[i];
     }
   }
-  return maxTime;
+  return maxElement;
 };
 
-var getRandomHue = function (min, max) {
-  var randomHue = min + Math.random() * (max + 1 - min);
-  return Math.floor(randomHue);
+var randomInteger = function randomInteger(min, max) {
+  // случайное число от min до (max+1)
+  var random = min + Math.random() * (max + 1 - min);
+  return Math.floor(random);
 };
 
-var getBlueWithRandomSaturation = function (h, min, max, l) {
-  return ('hsl(' + h + ',' + getRandomHue(min, max) + '%,' + l + '% )');
+var getBlueWithRandomSaturation = function () {
+  return ('hsl(240,' + randomInteger(0, 100) + '%, 50% )');
 };
 
 window.renderStatistics = function (ctx, names, times) {
@@ -49,7 +50,7 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Ура вы победили!', CLOUD_X + FONT_PADDING_X, CLOUD_Y + FONT_PADDING_Y);
   ctx.fillText('Список результатов:', CLOUD_X + FONT_PADDING_X, CLOUD_Y + FONT_PADDING_Y + FONT_SIZE);
 
-  var maxTime = getMaxTime(times);
+  var maxTime = getMaxElement(times);
 
   // вычисляем коэфициент для высоты столбца
   var gystoHeightCoef = GYSTO_HEIGHT / maxTime;
@@ -60,7 +61,7 @@ window.renderStatistics = function (ctx, names, times) {
   for (var j = 0; j < times.length; j++) {
     var gystoHeightUser = times[j] * gystoHeightCoef;
 
-    var userFillStyle = getBlueWithRandomSaturation(245, 0, 100, 50); // цвет НЕосновного игрока
+    var userFillStyle = getBlueWithRandomSaturation(); // цвет НЕосновного игрока
 
     if (names[j] === 'Вы') {
       userFillStyle = 'rgba(255, 0, 0, 1)';
@@ -70,13 +71,9 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillRect(gystoXUser + (GYSTO_WEIDTH + GYSTO_GAP) * j, gystoYUser + GYSTO_HEIGHT - gystoHeightUser, GYSTO_WEIDTH, gystoHeightUser);
 
     ctx.fillStyle = TEXT_COLOR;
-    ctx.font = '16px PT Mono';
-    ctx.textBaseline = 'hanging';
     ctx.fillText(names[j], gystoXUser + (GYSTO_WEIDTH + GYSTO_GAP) * j, gystoYUser + GYSTO_HEIGHT + FONT_SIZE);
 
     ctx.fillStyle = TEXT_COLOR;
-    ctx.font = '16px PT Mono';
-    ctx.textBaseline = 'hanging';
     ctx.fillText(Math.round(times[j]), gystoXUser + (GYSTO_WEIDTH + GYSTO_GAP) * j, gystoYUser + GYSTO_HEIGHT - gystoHeightUser - FONT_SIZE);
   }
 };
