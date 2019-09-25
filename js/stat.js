@@ -30,7 +30,6 @@ var getMaxElement = function (element) {
   return maxElement;
 };
 
-
 var getBlueWithRandomSaturation = function () {
   return ('hsl(240,' + window.getRandomInteger(0, 100) + '%, 50% )');
 };
