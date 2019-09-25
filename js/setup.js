@@ -13,7 +13,7 @@ userDialog.classList.remove('hidden');
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
 var generateWizardWithRandomOptions = function () {
-    return {
+  return {
     name: WIZARD_NAMES[window.getRandomElement(WIZARD_NAMES)] + ' ' + WIZARD_SURNAMES[window.getRandomElement(WIZARD_SURNAMES)],
     coatColor: WIZARD_COAT[window.getRandomElement(WIZARD_COAT)],
     eyesColor: WIZARD_EYES[window.getRandomElement(WIZARD_EYES)]
