@@ -1,9 +1,9 @@
 'use strict';
 
-var getRandomInteger = function randomInteger(min, max) {
+window.getRandomInteger = function randomInteger(min, max) {
   return Math.floor(min + Math.random() * (max + 1 - min));
 };
 
-var getRandomElement = function (arr) {
-  return getRandomInteger(0, arr.length - 1);
+window.getRandomElement = function (arr) {
+  return window.getRandomInteger(0, arr.length - 1);
 };
