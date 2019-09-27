@@ -30,12 +30,8 @@ var getMaxElement = function (element) {
   return maxElement;
 };
 
-var getRandomInteger = function randomInteger(min, max) {
-  return Math.floor(min + Math.random() * (max + 1 - min));
-};
-
 var getBlueWithRandomSaturation = function () {
-  return ('hsl(240,' + getRandomInteger(0, 100) + '%, 50% )');
+  return ('hsl(240,' + window.getRandomInteger(0, 100) + '%, 50% )');
 };
 
 window.renderStatistics = function (ctx, names, times) {
