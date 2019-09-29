@@ -53,9 +53,9 @@ var setupWizardFormName = setup.querySelector('.setup-user-name');
 
 
 // var formInputSubmitHandler = function (evt) {
-  // evt.stopPropagation();
-  // if (evt.keyCode === ENTER_BUTTON) {
-   //  evt.preventDefault();
+// evt.stopPropagation();
+// if (evt.keyCode === ENTER_BUTTON) {
+//  evt.preventDefault();
 //  }
 // };
 
@@ -90,7 +90,7 @@ wizardFireball.addEventListener('click', function () {
 
 var userNameInput = setup.querySelector('.setup-user-name');
 
-userNameInput.addEventListener('invalid', function (evt) {
+userNameInput.addEventListener('invalid', function () {
   if (userNameInput.validity.tooShort) {
     userNameInput.setCustomValidity('Имя должно состоять не менее чем из двух символов');
   } else if (userNameInput.validity.tooLong) {
