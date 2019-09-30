@@ -12,10 +12,13 @@ var WIZARD_FIREBALL = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 var setupOpen = document.querySelector('.setup-open');
 var setup = document.querySelector('.setup');
 var setupClose = setup.querySelector('.setup-close');
+var setupWizardFormName = setup.querySelector('.setup-user-name');
 
 var onPopupEscPressHandler = function (evt) {
   if (evt.keyCode === ESCAPE_BUTTON) {
-    closePopupHandler();
+    if (setupWizardFormName !== evt.target) {
+      closePopupHandler();
+    }
   }
 };
 
@@ -48,21 +51,6 @@ setupClose.addEventListener('keydown', function (evt) {
     closePopupHandler();
   }
 });
-
-var setupWizardFormName = setup.querySelector('.setup-user-name');
-
-
-// var formInputSubmitHandler = function (evt) {
-// evt.stopPropagation();
-// if (evt.keyCode === ENTER_BUTTON) {
-//  evt.preventDefault();
-//  }
-// };
-
-setupWizardFormName.addEventListener('keydown', function (evt) {
-  evt.stopPropagation();
-});
-
 
 var wizardCoat = setup.querySelector('.setup-wizard .wizard-coat');
 
