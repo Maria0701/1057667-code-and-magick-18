@@ -25,11 +25,16 @@
   var openPopupHandler = function () {
     setup.classList.remove('hidden');
     document.addEventListener('keydown', onPopupEscPressHandler);
+    window.setupTop = setup.offsetTop;
+    window.setupLeft = setup.offsetLeft;
+
   };
 
   var closePopupHandler = function () {
     setup.classList.add('hidden');
     document.removeEventListener('keydown', onPopupEscPressHandler);
+    setup.style.top = window.setupTop + 'px';
+    setup.style.left = window.setupLeft + 'px';
   };
 
   setupOpen.addEventListener('click', function () {
