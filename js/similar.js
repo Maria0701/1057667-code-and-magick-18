@@ -1,11 +1,10 @@
 'use strict';
 (function () {
   var URL_GET = 'https://js.dump.academy/code-and-magick/data';
+  var DEBOUNCE_INTERVAL_MS = 500;
   var coatColor;
   var eyesColor;
   var wizards = [];
-
-  var DEBOUNCE_INTERVAL = 500; // ms
 
   var debounce = function (cb) {
     var lastTimeout = null;
@@ -16,7 +15,7 @@
       }
       lastTimeout = window.setTimeout(function () {
         cb.apply(null, parameters);
-      }, DEBOUNCE_INTERVAL);
+      }, DEBOUNCE_INTERVAL_MS);
     };
   };
 
